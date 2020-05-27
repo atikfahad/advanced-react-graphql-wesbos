@@ -1,10 +1,15 @@
 import Page from '../components/Page';
-const MyApp = ({ Component }) => {
+import { ApolloProvider } from 'react-apollo';
+import withData from '../lib/withData';
+const MyApp = ({ Component, apollo, pageProps }) => {
+  // this exposes the query to the users
   return (
-    <Page>
-      <Component />
-    </Page>
+    <ApolloProvider client={apollo}>
+      <Page>
+        <Component {...pageProps} />
+      </Page>
+    </ApolloProvider>
   );
 };
 
-export default MyApp;
+export default withData(MyApp);
