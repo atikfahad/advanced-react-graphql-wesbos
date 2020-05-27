@@ -1,10 +1,7 @@
+import CreateItem from '../components/CreateItem';
 import Link from 'next/link';
 const Sell = (props) => {
-  return (
-    <>
-      <p>Sell Page</p>
-    </>
-  );
+  return <CreateItem />;
 };
 
 export default Sell;
