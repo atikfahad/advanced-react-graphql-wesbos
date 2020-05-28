@@ -122,15 +122,15 @@ const Mutations = {
     // 3. Email them that reset token
     // You can try catch error if mail don't pass etc
     // CANT FIGURE OUT THE BUG NOW
-    // const mailResponse = await transport.sendMail({
-    //   from: 'contact@atikfahad.com',
-    //   to: user.email,
-    //   subject: 'Your Password Reset',
-    //   html: makeANiceEmail(`Your Password Reset Token is here! \n\n
-    //   <a href="${
-    //     process.env.FRONTEND_URL
-    //   }/reset?resetToken=${resetToken}">Reset Password</a>`),
-    // });
+    const mailResponse = await transport.sendMail({
+      from: 'contact@atikfahad.com',
+      to: user.email,
+      subject: 'Your Password Reset',
+      html: makeANiceEmail(`Your Password Reset Token is here! \n\n
+      <a href="${
+        process.env.FRONTEND_URL
+      }/reset?resetToken=${resetToken}">Reset Password</a>`),
+    });
     return { message: 'Thanks' };
   },
   async resetPassword(parent, args, ctx, info) {
