@@ -2,6 +2,8 @@ import Link from 'next/link';
 import NavStyles from './styles/NavStyles';
 import User from './User';
 import Signout from './Signout';
+import { Mutation } from 'react-apollo';
+import { TOOGLE_CART_MUTATION } from './Cart';
 const Nav = () => (
   <User>
     {({ data: { me } }) => (
@@ -21,6 +23,9 @@ const Nav = () => (
               <a>Account</a>
             </Link>
             <Signout />
+            <Mutation mutation={TOOGLE_CART_MUTATION}>
+              {(toogleCart) => <button onClick={toogleCart}>My Cart</button>}
+            </Mutation>
           </>
         )}
         {!me && (
