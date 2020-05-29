@@ -52,10 +52,20 @@ const Mutations = {
       `{ 
       id
       title
+      user {
+        id
+      }
      }`
     ); // if you query another query inside when info dont get passed to manually we are passing it
     // 2. check if they own that item, or have the permissions
     // TODO
+    const ownsItem = item.user.id === ctx.request.userId;
+    const hasPermissions = ctx.request.user.permissions.some((permission) =>
+      ['ADMIN', 'ITEMDELETE'].includes(permission)
+    );
+    if (!ownsItem && hasPermissions) {
+      throw new Error('You dont have permission to do that!');
+    }
     // 3. Delete it
     return ctx.db.mutation.deleteItem({ where }, info);
   },
