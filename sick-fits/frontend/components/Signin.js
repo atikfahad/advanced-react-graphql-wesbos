@@ -28,6 +28,7 @@ export default class Signin extends Component {
       <Mutation
         mutation={SIGNIN_MUTATION}
         variables={this.state}
+        onError={({ error }) => (error = null)}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
         {(signin, { error, loading }) => (

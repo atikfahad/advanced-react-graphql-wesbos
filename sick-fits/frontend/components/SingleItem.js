@@ -37,7 +37,11 @@ const SINGLE_ITEM_QUERY = gql`
 export default class SingleItem extends Component {
   render() {
     return (
-      <Query query={SINGLE_ITEM_QUERY} variables={{ id: this.props.id }}>
+      <Query
+        onError={({ error }) => (error = null)}
+        query={SINGLE_ITEM_QUERY}
+        variables={{ id: this.props.id }}
+      >
         {({ error, loading, data }) => {
           if (error) return <Error error={error} />;
           if (loading) return <p>Loading...</p>;

@@ -32,6 +32,7 @@ export default class Signup extends Component {
     return (
       <Mutation
         mutation={SIGNUP_MUTATION}
+        onError={({ error }) => (error = null)}
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >

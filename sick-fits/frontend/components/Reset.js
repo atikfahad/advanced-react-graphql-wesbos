@@ -39,6 +39,7 @@ export default class Reset extends Component {
     return (
       <Mutation
         mutation={RESET_MUTATION}
+        onError={({ error }) => (error = null)}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
         variables={{
           resetToken: this.props.resetToken,

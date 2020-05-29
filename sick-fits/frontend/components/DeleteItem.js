@@ -30,6 +30,7 @@ export default class DeleteItem extends Component {
         mutation={DELETE_ITEM_MUTATION}
         variables={{ id: this.props.id }}
         update={this.update}
+        onError={({ error }) => (error = null)}
       >
         {(deleteItem, { error }) => (
           <button

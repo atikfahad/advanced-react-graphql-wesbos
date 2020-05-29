@@ -22,7 +22,11 @@ export default class RequestReset extends Component {
   };
   render() {
     return (
-      <Mutation mutation={REQUEST_RESET_MUTATION} variables={this.state}>
+      <Mutation
+        onError={({ error }) => (error = null)}
+        mutation={REQUEST_RESET_MUTATION}
+        variables={this.state}
+      >
         {(reset, { error, loading, called }) => (
           <Form
             method='post'

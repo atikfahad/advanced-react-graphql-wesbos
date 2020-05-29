@@ -60,7 +60,11 @@ export default class updateItem extends Component {
 
   render() {
     return (
-      <Query query={SINGLE_ITEM_QUERY} variables={{ id: this.props.id }}>
+      <Query
+        onError={({ error }) => (error = null)}
+        query={SINGLE_ITEM_QUERY}
+        variables={{ id: this.props.id }}
+      >
         {({ data, loading }) => {
           if (loading) return <p>Loading...</p>;
           if (!data.item) return <p>No Data Found for ID {this.props.id}</p>;
